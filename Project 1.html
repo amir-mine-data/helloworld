@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Project 1 - Amir Sodeifi</title>
+	<link rel="stylesheet" href="project1-style.css" media="screen and (min-width:769px)" />
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+	
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawVisualization);
+
+      function drawChart() {
+	  var query = new google.visualization.Query(https://docs.google.com/spreadsheets/d/1hSbzvGYUfLKVlzoKfaQ3gQPBo6607B5-7ZGN7jfUKoo/edit?usp=sharing);
+	  query.send(handleQueryResponse);
+	}
+
+	function handleQueryResponse(response) {
+	  var data = response.getDataTable();
+	  var chart = new google.visualization.LineChart(document.getElementById('columnchart'));
+	  chart.draw(data, null);
+	}
+
+    var options = {
+      title : 'Monthly Coffee Production by Country',
+      vAxis: {title: 'Cups'},
+      hAxis: {title: 'Year'},
+      seriesType: 'bars',
+      series: {5: {type: 'line'}}
+    };
+
+    var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+    </script>
+</head>
+
+<body>
+	<div id="intro">
+	<h1> DATS 6401 - Project 1 - Amir Sodeifi </h1>
+
+	<h2> For this project, I chose G20 countries and got my GDP, Education, military
+		and Health expenditure data from World bank website. </br>
+		The data was cleaned and prepared in Microsoft Excel before using Google API.</h2>
+	</div>
+	
+	<div id="compare-data-gdp">
+	<h2> Here you see the comparison of Health and Education data with countries GDP. </h2>
+	</div>
+	<div id="chart_div"></div>
+	
+	<div id="compare-data-military">
+	<h2> Here you see the comparison of Health and Education data with countries military expenditure. </h2>
+	</div>
+
+</body>
+
+</html>
